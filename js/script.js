@@ -11,9 +11,11 @@ function updateClock() {
     let minute = now.getMinutes();
     let second = now.getSeconds();
 
-    digitalElement.innerHTML = `${fixZero(hour)}:${fixZero(minute)}:${fixZero(
-        second
-    )}`;
+    if (second <= 9 || minute <= 9 || hour <= 9) {
+        digitalElement.innerHTML = `${fixZero(hour)}:${fixZero(minute)}:${fixZero(second)}`;
+    } else {
+        digitalElement.innerHTML = `${hour}:${minute}:${second}`;
+    }
 
     //PARTE ANALÓGICA
 
